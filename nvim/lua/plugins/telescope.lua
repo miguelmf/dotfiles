@@ -39,7 +39,7 @@ return {
                 --     },
                 -- },
                 --
-                file_ignore_patterns = { 'node%_modules/.*' },
+                file_ignore_patterns = { 'node_modules/.*', '.*%.jpg', '.*%.png', '.*%.gif', '.*%.jpeg' },
             },
             pickers = {
                 buffers = {
@@ -65,15 +65,15 @@ return {
                 },
             },
             extensions = {
-                file_browser = {
-                    theme = 'ivy',
-                    initial_mode = 'normal',
-                    mappings = {
-                        ['n'] = {
-                            -- ['o'] = fb_actions.select_default,
-                        },
-                    },
-                },
+                -- file_browser = {
+                --     theme = 'ivy',
+                --     initial_mode = 'normal',
+                --     mappings = {
+                --         ['n'] = {
+                --             -- ['o'] = fb_actions.select_default,
+                --         },
+                --     },
+                -- },
                 undo = {
                     initial_mode = 'normal',
                     use_delta = true,
@@ -90,6 +90,13 @@ return {
                 --     diff_plugin = 'diffview',
                 --     git_flags = {},
                 -- },
+                fzf = {
+                    fuzzy = true, -- false will only do exact matching
+                    override_generic_sorter = true, -- override the generic sorter
+                    override_file_sorter = true, -- override the file sorter
+                    case_mode = 'smart_case', -- or "ignore_case" or "respect_case"
+                    -- the default case_mode is "smart_case"
+                },
             },
         })
 
@@ -103,5 +110,6 @@ return {
         -- require('telescope').load_extension('heading')
         -- require('telescope').load_extension('neoclip')
         -- require('telescope').load_extension('noice')
+        require('telescope').load_extension('fzf')
     end,
 }
