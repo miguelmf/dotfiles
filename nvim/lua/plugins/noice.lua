@@ -38,7 +38,7 @@ return {
                         --     winhighlight = 'NormalFloat:NormalFloat,FloatBorder:FloatBorder',
                         -- },
                         position = {
-                            row = 3,
+                            row = 14,
                             col = '50%',
                         },
                     },
