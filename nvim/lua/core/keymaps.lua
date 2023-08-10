@@ -1,4 +1,4 @@
-vim.api.nvim_set_keymap('n', '<leader>Y', "ggyG``", { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<leader>Y', 'ggyG``', { noremap = true, silent = true })
 
 -- local builtin = require('telescope.builtin')
 -- vim.keymap.set('n', '<C-p>', builtin.find_files, {})
@@ -8,10 +8,10 @@ vim.api.nvim_set_keymap('n', '<leader>Y', "ggyG``", { noremap = true, silent = t
 
 -- nvim-tree
 -- vim.api.nvim_set_keymap('n', '<C-k>', ':NvimTreeToggle<CR>', { noremap = true, silent = true })
-vim.cmd("nnoremap <C-k> :NvimTreeToggle<CR>")
+vim.cmd('nnoremap <C-k> :NvimTreeToggle<CR>')
 
 -- copilot
-vim.cmd("let g:copilot_no_tab_map = v:true")
+vim.cmd('let g:copilot_no_tab_map = v:true')
 vim.cmd('imap <silent><script><expr> <Right> copilot#Accept("<Right>")')
 
 -- trouble
@@ -21,7 +21,7 @@ vim.cmd('imap <silent><script><expr> <Right> copilot#Accept("<Right>")')
 -- vim.keymap.set("n", "<leader>xq", function() require("trouble").open("quickfix") end)
 -- vim.keymap.set("n", "<leader>xl", function() require("trouble").open("loclist") end)
 -- vim.keymap.set("n", "gR", function() require("trouble").open("lsp_references") end)
-vim.cmd("nnoremap <C-i> <cmd>TroubleToggle<cr>")
+vim.cmd('nnoremap <C-i> <cmd>TroubleToggle<cr>')
 
 -- barbar
 local map = vim.api.nvim_set_keymap
@@ -68,3 +68,6 @@ map('n', '<C-q>', '<Cmd>BufferClose<CR>', opts)
 -- Other:
 -- :BarbarEnable - enables barbar (enabled by default)
 -- :BarbarDisable - very bad command, should never be used
+
+-- Clear last search highlighting
+vim.api.nvim_set_keymap('n', '<CR>', [[:noh<CR><CR>]], { noremap = true, silent = true })
