@@ -21,7 +21,8 @@ vim.cmd('imap <silent><script><expr> <Right> copilot#Accept("<Right>")')
 -- vim.keymap.set("n", "<leader>xq", function() require("trouble").open("quickfix") end)
 -- vim.keymap.set("n", "<leader>xl", function() require("trouble").open("loclist") end)
 -- vim.keymap.set("n", "gR", function() require("trouble").open("lsp_references") end)
-vim.cmd('nnoremap <C-i> <cmd>TroubleToggle<cr>')
+-- vim.cmd('nnoremap <C-i> <cmd>TroubleToggle<cr>')
+vim.api.nvim_set_keymap('n', '<C-x>', '<cmd>TroubleToggle<CR>', { noremap = true, silent = true })
 
 -- barbar
 local map = vim.api.nvim_set_keymap
@@ -71,3 +72,11 @@ map('n', '<C-q>', '<Cmd>BufferClose<CR>', opts)
 
 -- Clear last search highlighting
 vim.api.nvim_set_keymap('n', '<CR>', [[:noh<CR><CR>]], { noremap = true, silent = true })
+
+-- fzf-lua
+vim.keymap.set('n', '<C-p>', "<cmd>lua require('fzf-lua').files()<CR>", { silent = true })
+vim.keymap.set('n', '<c-f>', "<cmd>lua require('fzf-lua').live_grep_native()<CR>", { silent = true })
+-- vim.keymap.set('n', '<c-f>', "<cmd>lua require('fzf-lua').live_grep()<CR>", { silent = true })
+
+-- navbuddy
+vim.keymap.set('n', '<C-b>', '<cmd>Navbuddy<CR>', { silent = true })

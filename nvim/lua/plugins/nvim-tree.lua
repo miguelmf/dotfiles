@@ -70,19 +70,24 @@ return {
             nested = true,
         })
 
-        local function open_nvim_tree(data)
-            -- buffer is a real file on the disk
-            local real_file = vim.fn.filereadable(data.file) == 1
-
-            -- buffer is a [No Name]
-            local no_name = data.file == '' and vim.bo[data.buf].buftype == ''
-
-            if not real_file and not no_name then
-                return
+        -- open in all tabs
+        local nt_api = require('nvim-tree.api')
+        local tree_open = false
+        local function tab_enter()
+            if tree_open then
+                nt_api.tree.open()
+                vim.api.nvim_command('wincmd p')
+            else
+                nt_api.tree.close()
             end
-
-            -- open the tree, find the file but don't focus it
-            require('nvim-tree.api').tree.toggle({ focus = false, find_file = true })
         end
+        nt_api.events.subscribe(nt_api.events.Event.TreeOpen, function()
+            tree_open = true
+        end)
+        nt_api.events.subscribe(nt_api.events.Event.TreeClose, function()
+            tree_open = false
+        end)
+        vim.api.nvim_create_autocmd('TabEnter,TabNewEnter', { callback = tab_enter })
+        ---
     end,
 }

@@ -10,8 +10,8 @@ vim.opt.showcmd = true
 vim.opt.mouse = 'nvi'
 vim.opt.cursorline = true
 vim.opt.cursorcolumn = false
--- vim.opt.colorcolumn = '100'
-vim.opt.textwidth = 100
+vim.opt.textwidth = 80
+vim.opt_local.columns = 80
 vim.opt.laststatus = 0
 vim.o.cmdheight = 0
 vim.opt.number = true
@@ -24,7 +24,7 @@ vim.opt.sidescrolloff = 10
 vim.opt.list = true
 vim.opt.linebreak = true
 vim.opt.breakindent = true
-vim.opt.wrap = false
+vim.opt.wrap = true
 vim.opt.spell = false
 vim.opt.spelllang = { 'de' }
 -- vim.opt.spelllang = { 'en_us' }
@@ -79,3 +79,5 @@ vim.cmd([[
 --         autocmd BufWritePre * undojoin | Neoformat
 --     augroup END
 -- ]])
+
+vim.env.FZF_LUA_NVIM_BIN = 'nvim'
